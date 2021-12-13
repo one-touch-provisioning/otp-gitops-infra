@@ -27,7 +27,7 @@ rules:
     - get
     - create
     - patch
-    apiGroup:
+    apiGroups:
     - console.openshift.io
     resources:
     - consolelinks
