@@ -22,5 +22,7 @@ spec:
           value: openshift-gitops
         - name: CONSOLE_LINK_TEXT
           value: OpenShift GitOps
+        - name: APP_NAME
+          value: openshift-gitops
       restartPolicy: Never
   backoffLimit: 2
