@@ -2,7 +2,7 @@
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: default-sa-console-link-crb
+  name: default-sa-console-link-crb-gitops
 subjects:
   - kind: ServiceAccount
     name: default
