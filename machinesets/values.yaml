@@ -78,6 +78,5 @@ global:
       node-role.kubernetes.io/storage: ""
       cluster.ocs.openshift.io/openshift-storage: ""
   cloudpakNodes:
-    taints:
     labels:
       node-role.kubernetes.io/cp4x: ""
