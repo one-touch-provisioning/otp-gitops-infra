@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cluster-monitoring-config
+  namespace: openshift-monitoring
+  annotations:
+    argocd.argoproj.io/sync-wave: "100"
+    helm.sh/hook-weight: "100"
+{{- if or (default $.Values.global.infraNodes.labels $.Values.infraNodes.labels) (default $.Values.global.infraNodes.taints $.Values.infraNodes.taints) }}
+data:
+  config.yaml: |+
+{{- $components := tuple "alertmanagerMain" "prometheusK8s" "prometheusOperator" "grafana" "k8sPrometheusAdapter" "kubeStateMetrics" "telemeterClient" "openshiftStateMetrics" "thanosQuerier" -}}
+{{- range $key, $component := $components -}}
+{{- $params := dict "Values" $.Values "Component" $component -}}
+{{- include "monitoring.placement" $params | nindent 4 -}}
+{{- end -}}
+{{- end -}}

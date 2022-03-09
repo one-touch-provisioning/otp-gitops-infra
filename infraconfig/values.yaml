@@ -1,1 +1,63 @@
-global: {}
+# Default values for refarch-ocp4-gitops.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+cloudProvider:
+  name: "aws"
+  managed: "false" #set to true for ARO or ROSA
+
+argo:
+  namespace: argocd
+  serviceAccount: argocd-server
+
+registry:
+  storageClassName: ocs-storagecluster-cephfs
+  replicas: 2
+
+ingress:
+  replicas: 2
+
+infraNodes:
+  taints:
+    - effect: "NoSchedule"
+      key: "node-role.kubernetes.io/infra"
+      value: ""
+  labels:
+    node-role.kubernetes.io/infra: ""
+
+image-registry-hook-job:
+  name: infraconfig-postsync
+  namespace: tools
+  hook:
+    enabled: true
+    hooktype: infraconfig-postsync
+  hookdeletepolicy:
+    enabled: true
+    hookdeletepolicytype: HookSucceeded
+
+global:
+  argo:
+    namespace: openshift-gitops
+    serviceAccount: something
+  registry:
+    replicas: 2
+  ingress:
+    replicas: 3
+  infraNodes:
+    taints:
+      - effect: "NoSchedule"
+        key: "node-role.kubernetes.io/infra"
+        value: ""
+    labels:
+      node-role.kubernetes.io/infra: ""
+  storageNodes:
+    taints:
+      - effect: "NoSchedule"
+        key: "node.ocs.openshift.io/storage"
+        value: "true"
+    labels:
+      node-role.kubernetes.io/storage: ""
+      cluster.ocs.openshift.io/openshift-storage: ""
+  cloudpakNodes:
+    taints:
+    labels:
+      node-role.kubernetes.io/cp4x: ""

@@ -65,7 +65,7 @@ global:
   infraNodes:
     taints:
       - effect: "NoSchedule"
-        key: "infra"
+        key: "node-role.kubernetes.io/infra"
         value: ""
     labels:
       node-role.kubernetes.io/infra: ""
