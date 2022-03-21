@@ -20,8 +20,9 @@ global:
   infraNodes:
     taints:
       - effect: "NoSchedule"
-        key: "infra"
+        key: "node-role.kubernetes.io/infra"
         value: ""
+        operator: "Equal"
     labels:
       node-role.kubernetes.io/infra: ""
   storageNodes:
@@ -29,6 +30,7 @@ global:
       - effect: "NoSchedule"
         key: "node.ocs.openshift.io/storage"
         value: "true"
+        operator: "Equal"
     labels:
       node-role.kubernetes.io/storage: ""
       cluster.ocs.openshift.io/openshift-storage: ""
