@@ -1,8 +1,8 @@
 infrastructureId: ""
 
 cloudProvider:
-  name: "" # aws, azure or vsphere
-  managed: false
+  name: "" # aws, azure, ibmcloud or vsphere
+  managed: false # for roks, aro, rosa set to true
 
 vsphere:
   networkName: 
@@ -65,7 +65,7 @@ global:
   infraNodes:
     taints:
       - effect: "NoSchedule"
-        key: "infra"
+        key: "node-role.kubernetes.io/infra"
         value: ""
     labels:
       node-role.kubernetes.io/infra: ""
