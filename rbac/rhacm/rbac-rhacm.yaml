@@ -1,0 +1,220 @@
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: custom-argocd-cluster-argocd-application-controller-rhacm
+rules:
+  - apiGroups:
+      - operator.open-cluster-management.io
+    resources:
+      - multiclusterhubs
+    verbs:
+      - update
+      - create
+      - list
+      - delete
+      - patch
+  - apiGroups:
+      - policy.open-cluster-management.io 
+    resources:
+      - policies
+      - placementbindings
+      - policyautomations
+    verbs:
+      - update
+      - create
+      - list
+      - delete
+      - patch
+  - apiGroups:
+      - apps.open-cluster-management.io
+    resources:
+      - placementrules
+      - subscriptions
+      - channels
+      - deployables
+      - helmreleases
+    verbs:
+      - update
+      - create
+      - list
+      - delete
+      - patch
+  - apiGroups:
+      - app.k8s.io
+    resources:
+      - application
+    verbs:
+      - create
+      - read
+      - update
+      - delete
+  - apiGroups:
+      - ""
+    resources:
+      - configmaps
+      - secrets
+      - namespaces
+    verbs:
+      - create
+      - read
+      - update
+      - delete
+  - apiGroups:
+      - hive.openshift.io
+    resources:
+      - machinepools
+      - clusterdeployments
+      - selectorsyncsets
+    verbs:
+      - update
+      - create
+      - list
+      - delete
+      - patch
+  - apiGroups:
+      - agent.open-cluster-management.io
+    resources:
+      - klusterletaddonconfigs
+    verbs:
+      - update
+      - create
+      - list
+      - delete
+      - patch
+  - apiGroups:
+      - cluster.open-cluster-management.io
+    verbs:
+      - update
+      - create
+      - list
+      - delete
+      - patch
+    resources:
+      - managedclusters
+      - managedclusters/accept
+      - managedclusters/status
+      - managedclustersets
+      - managedclustersets/join
+      - managedclustersetbinding
+      - placements
+  - apiGroups:
+      - internal.open-cluster-management.io
+    resources:
+      - managedclusterinfos
+    verbs:
+      - update
+      - create
+      - list
+      - delete
+      - patch
+  - apiGroups:
+      - register.open-cluster-management.io
+    resources:
+      - managedclusters/accept
+    verbs:
+      - update
+      - create
+      - list
+      - delete
+      - patch
+  - apiGroups:
+      - objectbucket.io
+    resources:
+      - objectbucketclaims
+    verbs:
+      - update
+      - create
+      - list
+      - delete
+      - patch
+  - apiGroups:
+      - observability.open-cluster-management.io
+    resources:
+      - multiclusterobservabilities
+    verbs:
+      - update
+      - create
+      - list
+      - delete
+      - patch
+  - apiGroups:
+      - view.open-cluster-management.io
+    resources:
+      - managedclusterviews
+      - managedclusters
+      - managedclustersets
+    verbs:
+      - create
+      - read
+      - update
+      - delete
+  - apiGroups:
+      - inventory.open-cluster-management.io
+    resources:
+      - baremetalassets
+    verbs:
+      - create
+      - read
+      - update
+      - delete
+  - apiGroups:
+      - action.open-cluster-management.io
+    resources:
+      - managedclusteractions
+    verbs:
+      - create
+      - read
+      - update
+      - delete
+  - apiGroups:
+      - work.open-cluster-management.io
+    resources:
+      - manifestworks
+    verbs:
+      - create
+      - read
+      - update
+      - delete
+  - apiGroups:
+      - submarineraddon.open-cluster-management.io
+    resources:
+      - submarinerconfigs
+    verbs:
+      - create
+      - read
+      - update
+      - delete
+  - apiGroups:
+      - agent-install.openshift.io
+    resources:
+      - agentserviceconfigs
+    verbs:
+      - create
+      - read
+      - update
+      - delete
+  # - apiGroups:
+  #   - klusterletaddonconfigs.agent.open-cluster-management.io
+  #   - manageclusters.cluster.open-cluster-management.io
+  #   - managedclusteractions.action.open-cluster-management.io
+  #   - manifestworks.work.open-cluster-management.io
+  #   resources:
+  #   - '*'
+  #   verbs:
+  #   - create
+  #   - read
+  #   - update
+  #   - delete
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: openshift-gitops-cntk-argocd-application-controller-rhacm
+subjects:
+  - kind: ServiceAccount
+    name: openshift-gitops-cntk-argocd-application-controller
+    namespace: openshift-gitops
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: custom-argocd-cluster-argocd-application-controller-rhacm
