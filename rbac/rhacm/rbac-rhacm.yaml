@@ -138,6 +138,26 @@ rules:
       - delete
       - patch
   - apiGroups:
+      - search.open-cluster-management.io
+    resources:
+      - searchcustomizations
+    verbs:
+      - create
+      - get 
+      - list
+      - watch
+      - update
+      - delete
+      - patch
+  - apiGroups:
+      - wgpolicyk8s.io
+    resources:
+      - policyreports
+    verbs: 
+      - get 
+      - list
+      - watch
+  - apiGroups:
       - view.open-cluster-management.io
     resources:
       - managedclusterviews
