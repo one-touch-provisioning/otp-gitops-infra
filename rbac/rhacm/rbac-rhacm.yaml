@@ -213,18 +213,6 @@ rules:
       - read
       - update
       - delete
-  # - apiGroups:
-  #   - klusterletaddonconfigs.agent.open-cluster-management.io
-  #   - manageclusters.cluster.open-cluster-management.io
-  #   - managedclusteractions.action.open-cluster-management.io
-  #   - manifestworks.work.open-cluster-management.io
-  #   resources:
-  #   - '*'
-  #   verbs:
-  #   - create
-  #   - read
-  #   - update
-  #   - delete
 ---
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
