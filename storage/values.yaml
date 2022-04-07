@@ -32,7 +32,7 @@ global:
         value: "true"
         operator: "Equal"
     labels:
-      node-role.kubernetes.io/storage: ""
+      node-role.kubernetes.io/infra: ""
       cluster.ocs.openshift.io/openshift-storage: ""
   cloudpakNodes:
     taints:
