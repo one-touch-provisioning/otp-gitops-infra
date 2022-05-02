@@ -33,6 +33,7 @@ rules:
       - channels
       - deployables
       - helmreleases
+      - gitopsclusters
     verbs:
       - update
       - create
@@ -65,6 +66,8 @@ rules:
       - machinepools
       - clusterdeployments
       - selectorsyncsets
+      - syncsets
+      - admission
     verbs:
       - update
       - create
@@ -95,8 +98,10 @@ rules:
       - managedclusters/status
       - managedclustersets
       - managedclustersets/join
-      - managedclustersetbinding
+      - managedclustersets/bind
+      - managedclustersetbindings
       - placements
+      - placementdecisions
   - apiGroups:
       - internal.open-cluster-management.io
     resources:
@@ -199,6 +204,15 @@ rules:
       - submarineraddon.open-cluster-management.io
     resources:
       - submarinerconfigs
+    verbs:
+      - create
+      - read
+      - update
+      - delete
+  - apiGroups:
+      - agent-install.openshift.io
+    resources:
+      - agentserviceconfigs
     verbs:
       - create
       - read

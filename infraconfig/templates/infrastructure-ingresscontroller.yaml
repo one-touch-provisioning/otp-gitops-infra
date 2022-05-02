@@ -23,10 +23,10 @@ spec:
             - '{"spec": {"replicas": {{ $.Values.ingress.replicas }}, "nodePlacement": {"nodeSelector": {"matchLabels": {"node-role.kubernetes.io/infra": ""}},"tolerations": [{"effect":"NoSchedule", "key": "node-role.kubernetes.io/infra", "value": ""}]}}}'
           resources:
             requests:
-              cpu: "2500m"
+              cpu: "250m"
               memory: "64Mi"
             limits:
-              cpu: "2500m"
+              cpu: "250m"
               memory: "256Mi"
       restartPolicy: Never
       serviceAccountName: {{ .Values.argo.serviceAccount | default "argocd-server" }}
