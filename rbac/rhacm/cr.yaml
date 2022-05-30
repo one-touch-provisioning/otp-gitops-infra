@@ -1,0 +1,230 @@
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: custom-argocd-cluster-argocd-application-controller-rhacm
+rules:
+  - apiGroups:
+      - operator.open-cluster-management.io
+    resources:
+      - multiclusterhubs
+    verbs:
+      - update
+      - create
+      - list
+      - delete
+      - patch
+  - apiGroups:
+      - policy.open-cluster-management.io 
+    resources:
+      - policies
+      - placementbindings
+      - policyautomations
+    verbs:
+      - update
+      - create
+      - list
+      - delete
+      - patch
+  - apiGroups:
+      - apps.open-cluster-management.io
+    resources:
+      - placementrules
+      - placementrules/status
+      - subscriptions
+      - channels
+      - deployables
+      - helmreleases
+      - gitopsclusters
+    verbs:
+      - update
+      - create
+      - list
+      - delete
+      - patch
+  - apiGroups:
+      - app.k8s.io
+    resources:
+      - application
+    verbs:
+      - create
+      - read
+      - update
+      - delete
+  - apiGroups:
+      - ""
+    resources:
+      - configmaps
+      - secrets
+      - namespaces
+    verbs:
+      - create
+      - read
+      - update
+      - delete
+  - apiGroups:
+      - hive.openshift.io
+    resources:
+      - machinepools
+      - clusterdeployments
+      - selectorsyncsets
+      - syncsets
+      - admission
+    verbs:
+      - update
+      - create
+      - list
+      - delete
+      - patch
+  - apiGroups:
+      - agent.open-cluster-management.io
+    resources:
+      - klusterletaddonconfigs
+    verbs:
+      - update
+      - create
+      - list
+      - delete
+      - patch
+  - apiGroups:
+      - cluster.open-cluster-management.io
+    verbs:
+      - update
+      - create
+      - list
+      - delete
+      - patch
+    resources:
+      - managedclusters
+      - managedclusters/accept
+      - managedclusters/status
+      - managedclustersets
+      - managedclustersets/join
+      - managedclustersets/bind
+      - managedclustersetbindings
+      - placements
+      - placementdecisions
+  - apiGroups:
+      - internal.open-cluster-management.io
+    resources:
+      - managedclusterinfos
+    verbs:
+      - update
+      - create
+      - list
+      - delete
+      - patch
+  - apiGroups:
+      - register.open-cluster-management.io
+    resources:
+      - managedclusters/accept
+    verbs:
+      - update
+      - create
+      - list
+      - delete
+      - patch
+  - apiGroups:
+      - objectbucket.io
+    resources:
+      - objectbucketclaims
+    verbs:
+      - update
+      - create
+      - list
+      - delete
+      - patch
+  - apiGroups:
+      - observability.open-cluster-management.io
+    resources:
+      - multiclusterobservabilities
+    verbs:
+      - update
+      - create
+      - list
+      - delete
+      - patch
+  - apiGroups:
+      - search.open-cluster-management.io
+    resources:
+      - searchcustomizations
+    verbs:
+      - create
+      - get 
+      - list
+      - watch
+      - update
+      - delete
+      - patch
+  - apiGroups:
+      - wgpolicyk8s.io
+    resources:
+      - policyreports
+    verbs: 
+      - get 
+      - list
+      - watch
+  - apiGroups:
+      - view.open-cluster-management.io
+    resources:
+      - managedclusterviews
+      - managedclusters
+      - managedclustersets
+    verbs:
+      - create
+      - read
+      - update
+      - delete
+  - apiGroups:
+      - inventory.open-cluster-management.io
+    resources:
+      - baremetalassets
+    verbs:
+      - create
+      - read
+      - update
+      - delete
+  - apiGroups:
+      - action.open-cluster-management.io
+    resources:
+      - managedclusteractions
+    verbs:
+      - create
+      - read
+      - update
+      - delete
+  - apiGroups:
+      - work.open-cluster-management.io
+    resources:
+      - manifestworks
+    verbs:
+      - create
+      - read
+      - update
+      - delete
+  - apiGroups:
+      - submarineraddon.open-cluster-management.io
+    resources:
+      - submarinerconfigs
+    verbs:
+      - create
+      - read
+      - update
+      - delete
+  - apiGroups:
+      - agent-install.openshift.io
+    resources:
+      - agentserviceconfigs
+    verbs:
+      - create
+      - read
+      - update
+      - delete
+  - apiGroups:
+      - agent-install.openshift.io
+    resources:
+      - agentserviceconfigs
+    verbs:
+      - create
+      - read
+      - update
+      - delete

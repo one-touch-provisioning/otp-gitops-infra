@@ -1,0 +1,34 @@
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: custom-argocd-cluster-argocd-application-controller-kubevirt
+rules:
+  - apiGroups:
+      - hco.kubevirt.io
+    resources:
+      - hyperconvergeds
+    verbs:
+      - create
+      - update
+      - patch
+      - delete
+  - apiGroups:
+      - cdi.kubevirt.io
+    resources:
+      - datavolumes
+    verbs:
+      - create
+      - update
+      - patch
+      - delete
+  - apiGroups:
+      - kubevirt.io
+    resources:
+      - virtualmachines
+      - virtualmachineinstances
+      - virtualmachine-validator
+    verbs:
+      - create
+      - update
+      - patch
+      - delete

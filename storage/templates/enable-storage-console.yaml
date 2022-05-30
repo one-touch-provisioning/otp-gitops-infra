@@ -1,0 +1,38 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: enable-odf-console-plugin
+  annotations:
+    argocd.argoproj.io/sync-wave: "115"
+    argocd.argoproj.io/hook: "PostSync"
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+  namespace: {{ .Values.argo.namespace | default "openshift-gitops" }}
+spec:
+  template:
+    spec:
+      containers:
+      - name: enable-odf-console-plugin
+        command:
+            - /bin/bash
+            - -c
+            - |
+              echo "Patching the console to enable ODF console plugin"
+              oc patch consoles.operator.openshift.io cluster --patch ''{ "spec": { "plugins": ["odf-console"] } }'' --type=merge
+              if [ $? = 0 ]
+              then
+                  echo "ODF console enabled, patch was applied ok"
+              else
+                  echo "Failed to patch console"
+              fi
+        image: quay.io/openshift/origin-cli:latest
+        resources:
+            requests:
+              cpu: "250m"
+              memory: "64Mi"
+            limits:
+              cpu: "250m"
+              memory: "256Mi"
+      serviceAccount: {{ .Values.argo.serviceAccount | default "openshift-gitops-cntk-argocd-application-controller" }}
+      serviceAccountName: {{ .Values.argo.serviceAccount | default "openshift-gitops-cntk-argocd-application-controller" }}
+      restartPolicy: Never
+  backoffLimit: 4
