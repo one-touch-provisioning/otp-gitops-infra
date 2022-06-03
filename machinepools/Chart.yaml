@@ -1,0 +1,6 @@
+apiVersion: v2
+name: refarch-machinepools
+description: A Helm chart for deploying infrastructure reference architecture to OpenShift 4.x clusters
+type: application
+version: 0.0.1
+appVersion: 0.0.1
