@@ -1,0 +1,10 @@
+{{- $machinepools := tuple "storage" "infra" "cp4x" -}}
+{{- if and (eq $.Values.cloudProvider.name "aws") (eq $.Values.cloudProvider.managed true) -}}
+  {{- $machinepools := tuple "storage" "cp4x" -}}
+{{- end -}}
+{{- range $n, $name := $machinepools -}}
+  {{- $params := dict "Values" $.Values "Name" $name -}}
+  {{ printf "\n---\n" }}
+  {{- include "machinepools.header" $params -}}
+  {{- include "machinepools.clusterdeploymentref" $params | nindent 2 -}}
+{{- end -}}
