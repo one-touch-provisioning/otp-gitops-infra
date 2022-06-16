@@ -3,26 +3,44 @@ MachinePools Header
 {{ $params := dict "Values" .Values "Name" .Name "Zone" "{{ . }}"}}
 */}}
 
-{{- define "machinepools.clusterrole" -}}
-{{- if eq .Name "cp4x" -}}
-worker
-{{- else -}}
-{{- .Name -}}
-{{- end -}}
-{{- end -}}
-
-
 {{- define "machinepools.header" -}}
 {{- $params := dict "Values" .Values "Name" .Name -}}
 apiVersion: hive.openshift.io/v1
 kind: MachinePool
 metadata:
   name: {{ $.Values.cloud.clusterName }}-{{ .Name }}
+  labels:
+    {{- if eq .Name "infra" }}
+    machine.openshift.io/cluster-api-machine-role: {{ .Name }}
+    machine.openshift.io/cluster-api-machine-type: {{ .Name }}
+    node-role.kubernetes.io/infra: ""
+    {{- else if eq .Name "storage" }}
+    machine.openshift.io/cluster-api-machine-role: infra
+    machine.openshift.io/cluster-api-machine-type: infra
+    node-role.kubernetes.io/infra: ""
+    cluster.ocs.openshift.io/openshift-storage: ""
+    {{- else if eq .Name "cp4x" }}
+    machine.openshift.io/cluster-api-machine-role: worker
+    machine.openshift.io/cluster-api-machine-type: worker
+    node-role.kubernetes.io/cp4x: ""
+    {{- end }}
   annotations:
     argocd.argoproj.io/sync-wave: "360"
     helm.sh/hook-weight: "360"
   namespace: {{ $.Values.cloud.clusterName }}
 spec:
+  {{- if and (eq .Name "storage") (or $.Values.cloud.storageNodes.taints $.Values.global.storageNodes.taints) }}
+  taints:
+  {{- toYaml (default $.Values.global.storageNodes.taints $.Values.cloud.storageNodes.taints) | nindent 4 -}}
+  {{- end -}}
+  {{- if and (eq .Name "infra") (or $.Values.cloud.infraNodes.taints $.Values.global.infraNodes.taints) }}
+  taints:
+  {{- toYaml (default $.Values.global.infraNodes.taints $.Values.cloud.infraNodes.taints) | nindent 4 -}}
+  {{- end -}}
+  {{- if and (eq .Name "cp4x") (or $.Values.cloud.cloudpakNodes.taints $.Values.global.cloudpakNodes.taints) }}
+  taints:
+  {{- toYaml (default $.Values.global.cloudpakNodes.taints $.Values.cloud.cloudpakNodes.taints) | nindent 4 -}}
+  {{- end -}}
 {{- end -}}
 
 {{/*
