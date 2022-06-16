@@ -57,17 +57,10 @@ global:
       - effect: "NoSchedule"
         key: "node-role.kubernetes.io/infra"
         value: ""
-    labels:
-      node-role.kubernetes.io/infra: ""
   storageNodes:
     taints:
       - effect: "NoSchedule"
         key: "node.ocs.openshift.io/storage"
         value: "true"
-    labels:
-      node-role.kubernetes.io/infra: ""
-      cluster.ocs.openshift.io/openshift-storage: ""
   cloudpakNodes:
     taints:
-    labels:
-      node-role.kubernetes.io/cp4x: ""
