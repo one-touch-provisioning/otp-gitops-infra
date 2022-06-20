@@ -50,17 +50,17 @@ rules:
       - read
       - update
       - delete
-  - apiGroups:
-      - ""
-    resources:
-      - configmaps
-      - secrets
-      - namespaces
-    verbs:
-      - create
-      - read
-      - update
-      - delete
+ # - apiGroups:
+ #     - ""
+ #   resources:
+ #     - configmaps
+ #     - secrets
+ #     - namespaces
+ #   verbs:
+ #     - create
+ #     - read
+ #     - update
+ #     - delete
   - apiGroups:
       - hive.openshift.io
     resources:
@@ -209,6 +209,16 @@ rules:
       - create
       - read
       - update
+      - delete
+  - apiGroups:
+      - submariner.io
+    resources:
+      - brokers
+    verbs:
+      - create
+      - update
+      - list
+      - patch
       - delete
   - apiGroups:
       - agent-install.openshift.io
