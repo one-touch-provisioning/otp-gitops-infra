@@ -1,0 +1,26 @@
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: custom-argocd-cluster-argocd-application-controller-external-secrets
+rules:
+  - apiGroups:
+      - external-secrets.io
+    resources:
+      - clustersecretstores
+      - externalsecrets
+    verbs:
+      - create
+      - update
+      - list
+      - delete
+      - patch
+  - apiGroups:
+      - operator.external-secrets.io
+    resources:
+      - operatorconfigs
+    verbs:
+      - create
+      - update
+      - list
+      - delete
+      - patch

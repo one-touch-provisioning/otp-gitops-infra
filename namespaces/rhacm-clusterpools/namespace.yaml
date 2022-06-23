@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: rhacm-clusterpools
+  labels:
+    openshift.io/display-name: rhacm-clusterpools
+    openshift.io/cluster-monitoring: "true"

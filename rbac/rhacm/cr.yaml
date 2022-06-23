@@ -45,22 +45,12 @@ rules:
       - app.k8s.io
     resources:
       - application
+      - applications
     verbs:
       - create
       - read
       - update
       - delete
- # - apiGroups:
- #     - ""
- #   resources:
- #     - configmaps
- #     - secrets
- #     - namespaces
- #   verbs:
- #     - create
- #     - read
- #     - update
- #     - delete
   - apiGroups:
       - hive.openshift.io
     resources:
@@ -69,7 +59,11 @@ rules:
       - selectorsyncsets
       - syncsets
       - admission
+      - clusterpools
+      - clusterpools/scale
+      - clusterclaims
     verbs:
+      - get
       - update
       - create
       - list
@@ -88,6 +82,8 @@ rules:
   - apiGroups:
       - cluster.open-cluster-management.io
     verbs:
+      - get
+      - watch
       - update
       - create
       - list
@@ -233,6 +229,16 @@ rules:
       - agent-install.openshift.io
     resources:
       - agentserviceconfigs
+    verbs:
+      - create
+      - read
+      - update
+      - delete
+  - apiGroups:
+      - clusterview.open-cluster-management.io
+    resources: 
+      - managedclusters
+      - managedclustersets
     verbs:
       - create
       - read
