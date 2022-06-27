@@ -45,17 +45,7 @@ rules:
       - app.k8s.io
     resources:
       - application
-    verbs:
-      - create
-      - read
-      - update
-      - delete
-  - apiGroups:
-      - ""
-    resources:
-      - configmaps
-      - secrets
-      - namespaces
+      - applications
     verbs:
       - create
       - read
@@ -69,7 +59,11 @@ rules:
       - selectorsyncsets
       - syncsets
       - admission
+      - clusterpools
+      - clusterpools/scale
+      - clusterclaims
     verbs:
+      - get
       - update
       - create
       - list
@@ -88,6 +82,8 @@ rules:
   - apiGroups:
       - cluster.open-cluster-management.io
     verbs:
+      - get
+      - watch
       - update
       - create
       - list
@@ -211,6 +207,16 @@ rules:
       - update
       - delete
   - apiGroups:
+      - submariner.io
+    resources:
+      - brokers
+    verbs:
+      - create
+      - update
+      - list
+      - patch
+      - delete
+  - apiGroups:
       - agent-install.openshift.io
     resources:
       - agentserviceconfigs
@@ -223,6 +229,16 @@ rules:
       - agent-install.openshift.io
     resources:
       - agentserviceconfigs
+    verbs:
+      - create
+      - read
+      - update
+      - delete
+  - apiGroups:
+      - clusterview.open-cluster-management.io
+    resources: 
+      - managedclusters
+      - managedclustersets
     verbs:
       - create
       - read
