@@ -44,7 +44,7 @@ spec:
             limits:
               cpu: "250m"
               memory: "256Mi"
-      serviceAccount: {{ .Values.argo.serviceAccount | default "openshift-gitops-cntk-argocd-application-controller" }}
-      serviceAccountName: {{ .Values.argo.serviceAccount | default "openshift-gitops-cntk-argocd-application-controller" }}
+      serviceAccount: {{ .Values.argo.serviceAccount | default "otp-gitops-argocd-application-controller" }}
+      serviceAccountName: {{ .Values.argo.serviceAccount | default "otp-gitops-argocd-application-controller" }}
       restartPolicy: Never
   backoffLimit: 4
