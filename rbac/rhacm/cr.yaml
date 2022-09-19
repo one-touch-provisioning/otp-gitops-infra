@@ -62,6 +62,8 @@ rules:
       - clusterpools
       - clusterpools/scale
       - clusterclaims
+      - clusterimagesets
+      - hiveconfigs
     verbs:
       - get
       - update
@@ -220,6 +222,8 @@ rules:
       - agent-install.openshift.io
     resources:
       - agentserviceconfigs
+      - infraenvs
+      - agentclusterinstalls
     verbs:
       - create
       - read
@@ -228,6 +232,7 @@ rules:
   - apiGroups:
       - agent-install.openshift.io
     resources:
+      - nmstateconfigs
       - agentserviceconfigs
     verbs:
       - create
@@ -244,3 +249,27 @@ rules:
       - read
       - update
       - delete
+  - apiGroups:
+      - metal3.io
+    resources: 
+      - baremetalhosts 
+    verbs:
+      - create
+      - read
+      - update
+      - delete
+      - patch
+  - apiGroups:
+      - extensions.hive.openshift.io
+    resources: 
+      - agentclusterinstalls 
+    verbs:
+      - create
+      - read
+      - update
+      - delete
+      - patch
+
+
+
+      
