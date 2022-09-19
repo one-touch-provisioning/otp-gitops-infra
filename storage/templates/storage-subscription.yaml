@@ -10,6 +10,10 @@ metadata:
 spec:
   channel: {{ .Values.channel }}
   installPlanApproval: Automatic
+  {{- if or (eq .Values.channel "stable-4.8") (eq .Values.channel "stable-4.7")}}
+  name: ocs-operator
+  {{- else -}}
   name: odf-operator
+  {{- end}}
   source: redhat-operators
   sourceNamespace: openshift-marketplace
