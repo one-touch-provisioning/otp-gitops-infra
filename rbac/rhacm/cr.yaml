@@ -224,16 +224,7 @@ rules:
       - agentserviceconfigs
       - infraenvs
       - agentclusterinstalls
-    verbs:
-      - create
-      - read
-      - update
-      - delete
-  - apiGroups:
-      - agent-install.openshift.io
-    resources:
       - nmstateconfigs
-      - agentserviceconfigs
     verbs:
       - create
       - read
