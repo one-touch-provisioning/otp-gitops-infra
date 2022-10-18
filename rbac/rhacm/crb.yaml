@@ -1,10 +1,10 @@
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: openshift-gitops-cntk-argocd-application-controller-rhacm
+  name: openshift-gitops-otp-argocd-application-controller-rhacm
 subjects:
   - kind: ServiceAccount
-    name: openshift-gitops-cntk-argocd-application-controller
+    name: openshift-gitops-otp-argocd-application-controller
     namespace: openshift-gitops
 roleRef:
   apiGroup: rbac.authorization.k8s.io
@@ -14,10 +14,10 @@ roleRef:
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: openshift-gitops-cntk-applicationset-controller-rhacm
+  name: openshift-gitops-otp-applicationset-controller-rhacm
 subjects:
   - kind: ServiceAccount
-    name: openshift-gitops-cntk-applicationset-controller
+    name: openshift-gitops-otp-applicationset-controller
     namespace: openshift-gitops
 roleRef:
   apiGroup: rbac.authorization.k8s.io

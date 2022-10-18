@@ -17,7 +17,7 @@ spec:
         - name: APP_MENU_SECTION
           value: One Touch Provisioning
         - name: ROUTE_NAME
-          value: openshift-gitops-cntk-server
+          value: openshift-gitops-otp-server
         - name: ROUTE_NAMESPACE
           value: openshift-gitops
         - name: CONSOLE_LINK_TEXT
