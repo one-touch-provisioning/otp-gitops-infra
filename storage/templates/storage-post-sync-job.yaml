@@ -23,5 +23,5 @@ spec:
               cpu: "250m"
               memory: "256Mi"
       restartPolicy: Never
-      serviceAccountName: {{ .Values.argo.serviceAccount | default "openshift-gitops-cntk-argocd-application-controller" }}
+      serviceAccountName: {{ .Values.argo.serviceAccount | default "openshift-gitops-otp-argocd-application-controller" }}
   backoffLimit: 4

@@ -25,8 +25,8 @@ metadata:
     node-role.kubernetes.io/cp4x: ""
     {{- end }}
   annotations:
-    argocd.argoproj.io/sync-wave: "360"
-    helm.sh/hook-weight: "360"
+    argocd.argoproj.io/sync-wave: "460"
+    helm.sh/hook-weight: "460"
   namespace: {{ $.Values.cloud.clusterName }}
 spec:
   {{- if and (eq .Name "storage") (or $.Values.cloud.storageNodes.taints $.Values.global.storageNodes.taints) }}
