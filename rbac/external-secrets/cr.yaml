@@ -8,6 +8,7 @@ rules:
     resources:
       - clustersecretstores
       - externalsecrets
+      - clusterexternalsecrets
     verbs:
       - create
       - update
