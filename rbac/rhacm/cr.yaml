@@ -260,6 +260,16 @@ rules:
       - update
       - delete
       - patch
+  - apiGroups:
+      - multicluster.openshift.io
+    resources: 
+      - multiclusterengines
+    verbs:
+      - create
+      - read
+      - update
+      - delete
+      - patch
 
 
 
