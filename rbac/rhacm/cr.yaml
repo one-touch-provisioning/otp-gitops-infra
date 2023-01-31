@@ -235,6 +235,7 @@ rules:
     resources: 
       - managedclusters
       - managedclustersets
+      - managedcluster
     verbs:
       - create
       - read
