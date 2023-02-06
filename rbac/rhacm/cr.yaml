@@ -101,6 +101,7 @@ rules:
       - managedclustersetbindings
       - placements
       - placementdecisions
+      - hypershiftdeployments
   - apiGroups:
       - internal.open-cluster-management.io
     resources:
@@ -270,7 +271,3 @@ rules:
       - update
       - delete
       - patch
-
-
-
-      
