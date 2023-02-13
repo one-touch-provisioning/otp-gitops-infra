@@ -281,3 +281,13 @@ rules:
       - update
       - delete
       - patch
+  - apiGroups:
+      - "metal3.io"
+    resources:
+      - "provisionings"
+    verbs:
+      - create
+      - read
+      - update
+      - delete
+      - patch
