@@ -271,3 +271,13 @@ rules:
       - update
       - delete
       - patch
+  - apiGroups:
+      - "discovery.open-cluster-management.io"
+    resources:
+      - "discoveryconfigs"
+    verbs:
+      - create
+      - read
+      - update
+      - delete
+      - patch
