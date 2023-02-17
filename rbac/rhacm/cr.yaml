@@ -101,6 +101,7 @@ rules:
       - managedclustersetbindings
       - placements
       - placementdecisions
+      - hypershiftdeployments
   - apiGroups:
       - internal.open-cluster-management.io
     resources:
@@ -271,7 +272,23 @@ rules:
       - update
       - delete
       - patch
-
-
-
-      
+  - apiGroups:
+      - "discovery.open-cluster-management.io"
+    resources:
+      - "discoveryconfigs"
+    verbs:
+      - create
+      - read
+      - update
+      - delete
+      - patch
+  - apiGroups:
+      - "metal3.io"
+    resources:
+      - "provisionings"
+    verbs:
+      - create
+      - read
+      - update
+      - delete
+      - patch
