@@ -222,6 +222,7 @@ rules:
   - apiGroups:
       - agent-install.openshift.io
     resources:
+      - agents
       - agentserviceconfigs
       - infraenvs
       - agentclusterinstalls
@@ -273,9 +274,9 @@ rules:
       - delete
       - patch
   - apiGroups:
-      - "discovery.open-cluster-management.io"
+      - discovery.open-cluster-management.io
     resources:
-      - "discoveryconfigs"
+      - discoveryconfigs
     verbs:
       - create
       - read
