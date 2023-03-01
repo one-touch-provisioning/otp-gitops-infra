@@ -100,13 +100,13 @@ Default Node Volume Type
 {{- define "machineset.defaultNodeVolumeType" -}}
 {{- if eq $.Values.cloudProvider.name "aws" -}}
 {{- if eq .Name "storage" -}}
-{{- default "gp2" .Values.cloud.storageNodes.volumeType }}
+{{- default "gp3" .Values.cloud.storageNodes.volumeType }}
 {{- end -}}
 {{- if eq .Name "infra" -}}
-{{- default "gp2" .Values.cloud.infraNodes.volumeType }}
+{{- default "gp3" .Values.cloud.infraNodes.volumeType }}
 {{- end -}}
 {{- if eq .Name "cp4x" -}}
-{{- default "gp2" .Values.cloud.cloudpakNodes.volumeType }}
+{{- default "gp3" .Values.cloud.cloudpakNodes.volumeType }}
 {{- end -}}
 {{- end }}
 {{- if eq $.Values.cloudProvider.name "azure" -}}
@@ -130,24 +130,24 @@ Default Node Volume Size
 {{- define "machineset.defaultNodeVolumeSize" -}}
 {{- if eq $.Values.cloudProvider.name "aws" -}}
 {{- if eq .Name "storage" -}}
-{{- default "128" .Values.cloud.storageNodes.volumeSize }}
+{{- default "120" .Values.cloud.storageNodes.volumeSize }}
 {{- end -}}
 {{- if eq .Name "infra" -}}
-{{- default "128" .Values.cloud.infraNodes.volumeSize }}
+{{- default "120" .Values.cloud.infraNodes.volumeSize }}
 {{- end -}}
 {{- if eq .Name "cp4x" -}}
-{{- default "128" .Values.cloud.cloudpakNodes.volumeSize }}
+{{- default "120" .Values.cloud.cloudpakNodes.volumeSize }}
 {{- end -}}
 {{- end }}
 {{- if eq $.Values.cloudProvider.name "azure" -}}
 {{- if eq .Name "storage" -}}
-{{- default "128" .Values.cloud.storageNodes.volumeSize }}
+{{- default "120" .Values.cloud.storageNodes.volumeSize }}
 {{- end -}}
 {{- if eq .Name "infra" -}}
-{{- default "128" .Values.cloud.infraNodes.volumeSize }}
+{{- default "120" .Values.cloud.infraNodes.volumeSize }}
 {{- end -}}
 {{- if eq .Name "cp4x" -}}
-{{- default "128" .Values.cloud.cloudpakNodes.volumeSize }}
+{{- default "120" .Values.cloud.cloudpakNodes.volumeSize }}
 {{- end -}}
 {{- end -}}
 {{- end -}}

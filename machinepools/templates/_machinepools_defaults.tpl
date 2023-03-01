@@ -100,13 +100,13 @@ Default Node Volume Type
 {{- define "machinepools.defaultNodeVolumeType" -}}
 {{- if eq $.Values.cloudProvider.name "aws" -}}
 {{- if eq .Name "storage" -}}
-{{- default "gp2" .Values.cloud.storageNodes.volumeType }}
+{{- default "gp3" .Values.cloud.storageNodes.volumeType }}
 {{- end -}}
 {{- if eq .Name "infra" -}}
-{{- default "gp2" .Values.cloud.infraNodes.volumeType }}
+{{- default "gp3" .Values.cloud.infraNodes.volumeType }}
 {{- end -}}
 {{- if eq .Name "cp4x" -}}
-{{- default "gp2" .Values.cloud.cloudpakNodes.volumeType }}
+{{- default "gp3" .Values.cloud.cloudpakNodes.volumeType }}
 {{- end -}}
 {{- end -}}
 {{- end -}}
