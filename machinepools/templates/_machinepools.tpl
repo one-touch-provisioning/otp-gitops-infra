@@ -29,6 +29,22 @@ metadata:
     helm.sh/hook-weight: "460"
   namespace: {{ $.Values.cloud.clusterName }}
 spec:
+  labels:
+    {{- if eq .Name "infra" }}
+    machine.openshift.io/cluster-api-machine-role: {{ .Name }}
+    machine.openshift.io/cluster-api-machine-type: {{ .Name }}
+    node-role.kubernetes.io/infra: ""
+    {{- else if eq .Name "storage" }}
+    machine.openshift.io/cluster-api-machine-role: infra
+    machine.openshift.io/cluster-api-machine-type: infra
+    node-role.kubernetes.io/infra: ""
+    cluster.ocs.openshift.io/openshift-storage: ""
+    {{- else if eq .Name "cp4x" }}
+    machine.openshift.io/cluster-api-machine-role: worker
+    machine.openshift.io/cluster-api-machine-type: worker
+    node-role.kubernetes.io/cp4x: ""
+    {{- end }}
+
   {{- if and (eq .Name "storage") (or $.Values.cloud.storageNodes.taints $.Values.global.storageNodes.taints) }}
   taints:
   {{- toYaml (default $.Values.global.storageNodes.taints $.Values.cloud.storageNodes.taints) | nindent 4 -}}
