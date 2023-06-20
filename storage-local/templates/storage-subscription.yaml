@@ -1,0 +1,34 @@
+---
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  name: local-storage-operator
+  annotations:
+    argocd.argoproj.io/sync-wave: "101"
+    helm.sh/hook-weight: "101"
+spec:
+  channel: stable
+  installPlanApproval: Automatic
+  name: local-storage-operator
+  source: redhat-operators
+  sourceNamespace: openshift-marketplace
+---
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  labels:
+    operators.coreos.com/odf-operator.openshift-storage: ""
+  name: odf-operator
+  annotations:
+    argocd.argoproj.io/sync-wave: "102"
+    helm.sh/hook-weight: "102"
+spec:
+  channel: {{ .Values.channel }}
+  installPlanApproval: Automatic
+  {{- if or (eq .Values.channel "stable-4.8") (eq .Values.channel "stable-4.7") }}
+  name: ocs-operator
+  {{ else }}
+  name: odf-operator
+  {{- end }}
+  source: redhat-operators
+  sourceNamespace: openshift-marketplace

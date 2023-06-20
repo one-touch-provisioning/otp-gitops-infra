@@ -1,0 +1,6 @@
+apiVersion: v2
+name: localstorage-odf-operator
+description: Deployment of OpenShift Data Foundation and local storage operator
+type: application
+version: 0.1.0
+appVersion: "1.0"
