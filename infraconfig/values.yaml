@@ -41,7 +41,7 @@ global:
   registry:
     replicas: 2
   ingress:
-    replicas: 3
+    replicas: 2
   infraNodes:
     taints:
       - effect: "NoSchedule"
