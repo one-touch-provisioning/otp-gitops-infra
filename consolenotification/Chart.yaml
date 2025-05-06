@@ -2,9 +2,9 @@ apiVersion: v2
 name: ocp-console-notification
 description: Chart to create a ConsoleNotification resource in an OpenShift cluster
 type: application
-version: 0.2.0
+version: 0.2.1
 appVersion: 1.16.0
 dependencies:
   - name: ocp-console-notification
-    version: 0.2.0
+    version: 0.2.1
     repository: https://cloud-native-toolkit.github.io/toolkit-charts/
