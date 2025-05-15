@@ -106,6 +106,7 @@ rules:
       - internal.open-cluster-management.io
     resources:
       - managedclusterinfos
+      - managedclusterinfo
     verbs:
       - update
       - create
@@ -287,6 +288,17 @@ rules:
       - "metal3.io"
     resources:
       - "provisionings"
+    verbs:
+      - create
+      - read
+      - update
+      - delete
+      - patch
+  - apiGroups:
+      - hypershift.openshift.io 
+    resources:
+      - nodepools
+      - hostedclusters
     verbs:
       - create
       - read
