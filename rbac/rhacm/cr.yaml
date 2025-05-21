@@ -308,7 +308,7 @@ rules:
   - apiGroups:
       - route.openshift.io 
     resources:
-      - route
+      - Route
     verbs:
       - create
       - read
