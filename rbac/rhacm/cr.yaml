@@ -305,3 +305,13 @@ rules:
       - update
       - delete
       - patch
+  - apiGroups:
+      - route.openshift.io 
+    resources:
+      - route
+    verbs:
+      - create
+      - read
+      - update
+      - delete
+      - patch
